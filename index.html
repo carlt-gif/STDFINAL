@@ -1,317 +1,309 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Premiere: Carl & Emma's Wedding</title>
+    <title>The Premiere: Carl & Emma</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=DM+Sans:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --charcoal: #111111;
-            --cream: #f4f4f4;
-            --red: #e63946;
+            --gold-light: #fff3d1;
+            --gold: #c5a059;
+            --gold-dark: #8c6d31;
+            --bg: #070708;
+            --card: #111113;
+            --text: #f3f3f4;
+            --text-muted: #8a8a93;
+            --red: #ff453a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
-                        radial-gradient(circle, #333 10%, #111 90%);
-            color: var(--cream);
-            margin: 0;
-            padding: 20px;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 30px 20px;
+            letter-spacing: -0.01em;
         }
 
-        .poster-container {
-            background-color: var(--charcoal);
-            border: 6px double var(--gold);
-            padding: 40px 30px;
-            border-radius: 4px;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-            max-width: 450px;
+        .invitation-card {
+            background-color: var(--card);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 50px 40px;
+            max-width: 480px;
             width: 100%;
             text-align: center;
-            box-sizing: border-box;
+            border-radius: 12px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(197, 160, 89, 0.03);
+            position: relative;
         }
 
-        .billing-top {
-            font-family: 'Arial Narrow', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            color: #888;
+        .studio-tag {
+            font-size: 0.7rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .title-group {
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: 2.8rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            font-weight: 900;
             letter-spacing: 2px;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #ffffff 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ampersand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
             color: var(--gold);
-            margin: 5px 0;
+            margin: 10px 0;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .event-tagline {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 40px;
         }
 
-        .conjunction {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--cream);
-        }
-
-        .tagline {
-            font-size: 1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #bbb;
-            border-top: 1px solid var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding: 10px 0;
-            margin: 25px 0;
-        }
-
-        .details-box {
-            margin: 25px 0;
+        .production-details {
+            margin-bottom: 45px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 0;
         }
 
         .venue {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 300;
             letter-spacing: 1px;
-            color: var(--cream);
-            margin-bottom: 5px;
+            color: #d1d1d6;
+            margin-bottom: 8px;
         }
 
         .date {
+            font-family: 'Cinzel', serif;
             font-size: 1.4rem;
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 3px;
             color: var(--gold);
-            letter-spacing: 2px;
         }
 
-        /* Countdown Clock */
-        .countdown-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 25px auto;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(214, 175, 55, 0.2);
-        }
-
-        .countdown-item {
+        /* Modernized Timer Row */
+        .timer-row {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            max-width: 320px;
+            margin: 0 auto 50px auto;
         }
 
-        .countdown-value {
-            font-family: monospace;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: var(--gold);
+        .timer-segment {
+            flex: 1;
+            text-align: center;
         }
 
-        .countdown-label {
-            font-size: 0.7rem;
+        .timer-val {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .timer-lbl {
+            font-size: 0.6rem;
             text-transform: uppercase;
-            color: #888;
-        }
-
-        /* Fixed Interactive RSVP Area */
-        .rsvp-section {
-            margin-top: 35px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px dashed rgba(214, 175, 55, 0.3);
-        }
-
-        .rsvp-title {
-            font-size: 1.1rem;
             letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* Locked RSVP Bounds Sandbox */
+        .rsvp-section {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .rsvp-headline {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 20px;
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
-        /* The playground arena for the buttons */
-        .btn-arena {
+        .action-box {
             position: relative;
             width: 100%;
-            height: 80px; 
-            margin: 0 auto;
+            height: 60px;
         }
 
         .btn {
-            padding: 12px 25px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 14px 30px;
             border-radius: 4px;
             cursor: pointer;
-            font-family: sans-serif;
+            position: absolute;
+            height: 46px;
             box-sizing: border-box;
+            outline: none;
+            border: none;
         }
 
         .btn-yes {
-            background-color: var(--gold);
-            color: var(--charcoal);
-            border: none;
-            position: absolute;
-            left: 15%;
-            top: 15px;
+            background: var(--gold);
+            color: #070708;
+            left: 10%;
+            top: 7px;
             z-index: 10;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         .btn-yes:hover {
-            background-color: #fff;
-            transform: scale(1.05);
+            background-color: var(--gold-light);
+            transform: translateY(-1px);
         }
 
         .btn-no {
-            background-color: transparent;
+            background: transparent;
             color: var(--red);
-            border: 2px solid var(--red);
-            position: absolute;
+            border: 1px solid rgba(255, 69, 58, 0.4);
             left: 55%;
-            top: 15px;
-            transition: left 0.1s ease, top 0.1s ease;
+            top: 7px;
             z-index: 20;
-        }
-
-        .film-sprocket {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            opacity: 0.2;
-            margin-bottom: 15px;
-        }
-        .sprocket-hole {
-            width: 12px;
-            height: 15px;
-            background-color: var(--cream);
-            border-radius: 2px;
+            white-space: nowrap;
+            transition: left 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
     </style>
 </head>
 <body>
 
-    <div class="poster-container">
-        <div class="film-sprocket">
-            <div class="sprocket-hole"></div>
-            <div class="sprocket-hole"></div>
-            <div class="sprocket-hole"></div>
-            <div class="sprocket-hole"></div>
-            <div class="sprocket-hole"></div>
-            <div class="sprocket-hole"></div>
+    <div class="invitation-card">
+        <div class="studio-tag">A Lifetime Production Presenting A Love Story</div>
+        
+        <div class="title-group">
+            <h1>CARL</h1>
+            <div class="ampersand">and</div>
+            <h1>EMMA</h1>
         </div>
 
-        <div class="billing-top">A Lifetime Production Presenting A Love Story</div>
-        
-        <h1>CARL</h1>
-        <div class="conjunction">and</div>
-        <h1>EMMA</h1>
+        <div class="event-tagline">Are Locking In The Release Date</div>
 
-        <div class="tagline">Are Locking In The Release Date</div>
-
-        <div class="details-box">
-            <div class="venue">📍 Calvary Baptist Church - SJDM</div>
+        <div class="production-details">
+            <div class="venue">Calvary Baptist Church — SJDM</div>
             <div class="date">DECEMBER 22, 2026</div>
         </div>
 
-        <!-- Countdown Clock -->
-        <div class="countdown-container">
-            <div class="countdown-item">
-                <span class="countdown-value" id="days">00</span>
-                <span class="countdown-label">Days</span>
+        <div class="timer-row">
+            <div class="timer-segment">
+                <span class="timer-val" id="days">00</span>
+                <span class="timer-lbl">Days</span>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="hours">00</span>
-                <span class="countdown-label">Hrs</span>
+            <div class="timer-segment">
+                <span class="timer-val" id="hours">00</span>
+                <span class="timer-lbl">Hrs</span>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="minutes">00</span>
-                <span class="countdown-label">Mins</span>
+            <div class="timer-segment">
+                <span class="timer-val" id="minutes">00</span>
+                <span class="timer-lbl">Mins</span>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="seconds">00</span>
-                <span class="countdown-label">Secs</span>
+            <div class="timer-segment">
+                <span class="timer-val" id="seconds">00</span>
+                <span class="timer-lbl">Secs</span>
             </div>
         </div>
 
-        <!-- RSVP Section Area -->
         <div class="rsvp-section">
-            <div class="rsvp-title">Will you join us for the premiere?</div>
-            <div class="btn-arena" id="btnArena">
-                <button class="btn btn-yes" onclick="celebrate()">YES!</button>
-                <button class="btn btn-no" id="noBtn">NO</button>
+            <div class="rsvp-headline">Will you join us for the premiere?</div>
+            <div class="action-box" id="actionBox">
+                <button class="btn btn-yes" onclick="confirmAttendance()">YES!</button>
+                <button class="btn btn-no" id="noButton">NO</button>
             </div>
         </div>
     </div>
 
     <script>
-        // --- COUNTDOWN CLOCK LOGIC ---
-        const weddingDate = new Date("Dec 22, 2026 00:00:00").getTime();
+        // --- LIVE CLOCK ---
+        const eventTimestamp = new Date("Dec 22, 2026 00:00:00").getTime();
 
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+        const updateClock = setInterval(function() {
+            const timeNow = new Date().getTime();
+            const delta = eventTimestamp - timeNow;
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
+            if (delta < 0) {
+                clearInterval(updateClock);
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const d = Math.floor(delta / (1000 * 60 * 60 * 24));
+            const h = Math.floor((delta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((delta % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById("days").innerText = String(d).padStart(2, '0');
+            document.getElementById("hours").innerText = String(h).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(m).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(s).padStart(2, '0');
         }, 1000);
 
-        // --- FIXED RUNAWAY BUTTON LOGIC ---
-        const noBtn = document.getElementById('noBtn');
-        const arena = document.getElementById('btnArena');
+        // --- SAFE BOUNDS RUNAWAY BUTTON ---
+        const noButton = document.getElementById('noButton');
+        const actionBox = document.getElementById('actionBox');
 
-        function moveButton() {
-            const arenaWidth = arena.clientWidth;
-            const arenaHeight = arena.clientHeight;
-            const btnWidth = noBtn.clientWidth;
-            const btnHeight = noBtn.clientHeight;
+        function relocateNoButton() {
+            const boundaryOffset = 6; 
+            const maxX = actionBox.clientWidth - noButton.clientWidth - boundaryOffset;
+            const maxY = actionBox.clientHeight - noButton.clientHeight - boundaryOffset;
 
-            // Strict maximum boundaries to keep it perfectly inside the arena box
-            const maxX = arenaWidth - btnWidth;
-            const maxY = arenaHeight - btnHeight;
+            const randomX = Math.max(boundaryOffset, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(boundaryOffset, Math.floor(Math.random() * maxY));
 
-            // Generate positions strictly within bounds
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
         }
 
-        noBtn.addEventListener('mouseenter', moveButton);
-        noBtn.addEventListener('touchstart', function(e) {
+        noButton.addEventListener('mouseenter', relocateNoButton);
+        noButton.addEventListener('touchstart', function(e) {
             e.preventDefault(); 
-            moveButton();
+            relocateNoButton();
         });
 
-        function celebrate() {
-            alert("🎟️ Ticket Booked! We can't wait to celebrate our premiere with you! ❤️");
+        function confirmAttendance() {
+            alert("🎟️ Ticket Booked! See you at the premiere! ❤️");
         }
     </script>
 </body>
