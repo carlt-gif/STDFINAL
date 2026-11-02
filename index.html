@@ -6,17 +6,17 @@
     <title>The Premiere: Carl & Emma</title>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=DM+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold-light: #fff3d1;
             --gold: #c5a059;
             --gold-dark: #8c6d31;
-            --bg: #070708;
-            --card: #111113;
-            --text: #f3f3f4;
-            --text-muted: #8a8a93;
-            --red: #ff453a;
+            --bg-dark: #0a0a0b;
+            --card-bg: #121215;
+            --text-light: #f5f5f7;
+            --text-muted: #8e8e93;
+            --red-accent: #ff453a;
         }
 
         * {
@@ -26,284 +26,263 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
-            letter-spacing: -0.01em;
+            padding: 40px 20px;
         }
 
-        .invitation-card {
-            background-color: var(--card);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            padding: 50px 40px;
-            max-width: 480px;
+        .premium-poster {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 60px 40px;
+            max-width: 460px;
             width: 100%;
             text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(197, 160, 89, 0.03);
+            border-radius: 16px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
             position: relative;
+            overflow: hidden;
         }
 
-        .studio-tag {
+        .studio-line {
             font-size: 0.7rem;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 40px;
+            font-weight: 400;
+            margin-bottom: 45px;
         }
 
-        .title-group {
-            margin-bottom: 40px;
+        .names-wrapper {
+            margin-bottom: 45px;
         }
 
         h1 {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 30%, var(--gold) 100%);
+            background: linear-gradient(180deg, #ffffff 20%, var(--gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .ampersand {
+        .ampersand-divider {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: var(--gold);
-            margin: 10px 0;
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            margin: 12px 0;
             font-weight: 500;
-            opacity: 0.8;
+            letter-spacing: 2px;
         }
 
-        .event-tagline {
-            font-size: 0.75rem;
+        .announcement-tag {
+            font-size: 0.8rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--text-muted);
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-
-        .production-details {
+            font-weight: 400;
             margin-bottom: 45px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px 0;
         }
 
-        .venue {
+        .event-details-block {
+            margin-bottom: 50px;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            padding: 30px 0;
+        }
+
+        .location-text {
             font-size: 0.95rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 1px;
-            color: #d1d1d6;
-            margin-bottom: 8px;
+            color: #e5e5ea;
+            margin-bottom: 12px;
         }
 
-        .date {
+        .date-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 3px;
             color: var(--gold);
         }
 
-        /* Modernized Timer Row */
-        .timer-row {
+        .countdown-row {
             display: flex;
             justify-content: space-between;
-            max-width: 320px;
+            max-width: 340px;
             margin: 0 auto 50px auto;
         }
 
-        .timer-segment {
+        .countdown-segment {
             flex: 1;
             text-align: center;
         }
 
-        .timer-val {
+        .countdown-number {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-light);
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
-        .timer-lbl {
+        .countdown-label {
             font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
-            font-weight: 700;
+            font-weight: 600;
         }
 
-        /* Locked RSVP Bounds Sandbox */
-        .rsvp-section {
-            position: relative;
+        .rsvp-card-section {
             background: rgba(255, 255, 255, 0.02);
-            padding: 25px 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .rsvp-headline {
+        .rsvp-header-text {
             font-family: 'Cinzel', serif;
             font-size: 0.95rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--gold-light);
         }
 
-        .action-box {
-            position: relative;
+        .interactive-button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 24px;
             width: 100%;
-            height: 60px;
+            min-height: 50px;
+            align-items: center;
         }
 
         .btn {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 14px 30px;
+            padding: 14px 32px;
             border-radius: 4px;
             cursor: pointer;
-            position: absolute;
-            height: 46px;
-            box-sizing: border-box;
-            outline: none;
             border: none;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
         }
 
         .btn-yes {
-            background: var(--gold);
-            color: #070708;
-            left: 10%;
-            top: 7px;
-            z-index: 10;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .btn-yes:hover {
-            background-color: var(--gold-light);
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: #0a0a0b;
         }
 
         .btn-no {
             background: transparent;
-            color: var(--red);
-            border: 1px solid rgba(255, 69, 58, 0.4);
-            left: 55%;
-            top: 7px;
-            z-index: 20;
-            white-space: nowrap;
-            transition: left 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+            color: var(--red-accent);
+            border: 1px solid rgba(255, 69, 58, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="invitation-card">
-        <div class="studio-tag">A Lifetime Production Presenting A Love Story</div>
+    <div class="premium-poster">
+        <div class="studio-line">A Lifetime Production Presenting A Love Story</div>
         
-        <div class="title-group">
+        <div class="names-wrapper">
             <h1>CARL</h1>
-            <div class="ampersand">and</div>
+            <div class="ampersand-divider">and</div>
             <h1>EMMA</h1>
         </div>
 
-        <div class="event-tagline">Are Locking In The Release Date</div>
+        <div class="announcement-tag">Are Locking In The Release Date</div>
 
-        <div class="production-details">
-            <div class="venue">Calvary Baptist Church — SJDM</div>
-            <div class="date">DECEMBER 22, 2026</div>
+        <div class="event-details-block">
+            <div class="location-text">Calvary Baptist Church — SJDM</div>
+            <div class="date-text">DECEMBER 22, 2026</div>
         </div>
 
-        <div class="timer-row">
-            <div class="timer-segment">
-                <span class="timer-val" id="days">00</span>
-                <span class="timer-lbl">Days</span>
+        <div class="countdown-row">
+            <div class="countdown-segment">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Days</span>
             </div>
-            <div class="timer-segment">
-                <span class="timer-val" id="hours">00</span>
-                <span class="timer-lbl">Hrs</span>
+            <div class="countdown-segment">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Hrs</span>
             </div>
-            <div class="timer-segment">
-                <span class="timer-val" id="minutes">00</span>
-                <span class="timer-lbl">Mins</span>
+            <div class="countdown-segment">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Mins</span>
             </div>
-            <div class="timer-segment">
-                <span class="timer-val" id="seconds">00</span>
-                <span class="timer-lbl">Secs</span>
+            <div class="countdown-segment">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Secs</span>
             </div>
         </div>
 
-        <div class="rsvp-section">
-            <div class="rsvp-headline">Will you join us for the premiere?</div>
-            <div class="action-box" id="actionBox">
-                <button class="btn btn-yes" onclick="confirmAttendance()">YES!</button>
-                <button class="btn btn-no" id="noButton">NO</button>
+        <div class="rsvp-card-section">
+            <div class="rsvp-header-text">Will you join us for the premiere?</div>
+            <div class="interactive-button-container" id="btnContainer">
+                <button class="btn btn-yes" onclick="showCelebration()">YES!</button>
+                <button class="btn btn-no" id="runawayNoBtn">NO</button>
             </div>
         </div>
     </div>
 
     <script>
-        // --- LIVE CLOCK ---
-        const eventTimestamp = new Date("Dec 22, 2026 00:00:00").getTime();
+        const targetEventDate = new Date("Dec 22, 2026 00:00:00").getTime();
 
-        const updateClock = setInterval(function() {
-            const timeNow = new Date().getTime();
-            const delta = eventTimestamp - timeNow;
+        const countdownEngine = setInterval(function() {
+            const currentMoment = new Date().getTime();
+            const timeDifference = targetEventDate - currentMoment;
 
-            if (delta < 0) {
-                clearInterval(updateClock);
+            if (timeDifference < 0) {
+                clearInterval(countdownEngine);
                 return;
             }
 
-            const d = Math.floor(delta / (1000 * 60 * 60 * 24));
-            const h = Math.floor((delta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((delta % (1000 * 60)) / 1000);
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = String(d).padStart(2, '0');
-            document.getElementById("hours").innerText = String(h).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(m).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(s).padStart(2, '0');
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
         }, 1000);
 
-        // --- SAFE BOUNDS RUNAWAY BUTTON ---
-        const noButton = document.getElementById('noButton');
-        const actionBox = document.getElementById('actionBox');
+        const runawayNoBtn = document.getElementById('runawayNoBtn');
+        const btnContainer = document.getElementById('btnContainer');
 
-        function relocateNoButton() {
-            const boundaryOffset = 6; 
-            const maxX = actionBox.clientWidth - noButton.clientWidth - boundaryOffset;
-            const maxY = actionBox.clientHeight - noButton.clientHeight - boundaryOffset;
-
-            const randomX = Math.max(boundaryOffset, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(boundaryOffset, Math.floor(Math.random() * maxY));
-
-            noButton.style.left = randomX + 'px';
-            noButton.style.top = randomY + 'px';
+        function alternateLayoutDirection() {
+            if (btnContainer.style.flexDirection === 'row-reverse') {
+                btnContainer.style.flexDirection = 'row';
+            } else {
+                btnContainer.style.flexDirection = 'row-reverse';
+            }
         }
 
-        noButton.addEventListener('mouseenter', relocateNoButton);
-        noButton.addEventListener('touchstart', function(e) {
-            e.preventDefault(); 
-            relocateNoButton();
+        runawayNoBtn.addEventListener('mouseenter', alternateLayoutDirection);
+        runawayNoBtn.addEventListener('touchstart', function(event) {
+            event.preventDefault(); 
+            alternateLayoutDirection();
         });
 
-        function confirmAttendance() {
-            alert("🎟️ Ticket Booked! See you at the premiere! ❤️");
+        function showCelebration() {
+            alert("🎟️ Ticket Booked! We look forward to seeing you at the premiere! ❤️");
         }
     </script>
 </body>
