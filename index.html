@@ -1,0 +1,318 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Premiere: Carl & Emma's Wedding</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --charcoal: #111111;
+            --cream: #f4f4f4;
+            --red: #e63946;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
+                        radial-gradient(circle, #333 10%, #111 90%);
+            color: var(--cream);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .poster-container {
+            background-color: var(--charcoal);
+            border: 6px double var(--gold);
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .billing-top {
+            font-family: 'Arial Narrow', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+
+        .conjunction {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--cream);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #bbb;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 0;
+            margin: 25px 0;
+        }
+
+        .details-box {
+            margin: 25px 0;
+        }
+
+        .venue {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--cream);
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        /* Countdown Clock */
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 25px auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(214, 175, 55, 0.2);
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .countdown-value {
+            font-family: monospace;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        /* Fixed Interactive RSVP Area */
+        .rsvp-section {
+            margin-top: 35px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed rgba(214, 175, 55, 0.3);
+        }
+
+        .rsvp-title {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        /* The playground arena for the buttons */
+        .btn-arena {
+            position: relative;
+            width: 100%;
+            height: 80px; 
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        .btn-yes {
+            background-color: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            position: absolute;
+            left: 15%;
+            top: 15px;
+            z-index: 10;
+        }
+
+        .btn-yes:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background-color: transparent;
+            color: var(--red);
+            border: 2px solid var(--red);
+            position: absolute;
+            left: 55%;
+            top: 15px;
+            transition: left 0.1s ease, top 0.1s ease;
+            z-index: 20;
+        }
+
+        .film-sprocket {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            opacity: 0.2;
+            margin-bottom: 15px;
+        }
+        .sprocket-hole {
+            width: 12px;
+            height: 15px;
+            background-color: var(--cream);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        <div class="film-sprocket">
+            <div class="sprocket-hole"></div>
+            <div class="sprocket-hole"></div>
+            <div class="sprocket-hole"></div>
+            <div class="sprocket-hole"></div>
+            <div class="sprocket-hole"></div>
+            <div class="sprocket-hole"></div>
+        </div>
+
+        <div class="billing-top">A Lifetime Production Presenting A Love Story</div>
+        
+        <h1>CARL</h1>
+        <div class="conjunction">and</div>
+        <h1>EMMA</h1>
+
+        <div class="tagline">Are Locking In The Release Date</div>
+
+        <div class="details-box">
+            <div class="venue">📍 Calvary Baptist Church - SJDM</div>
+            <div class="date">DECEMBER 22, 2026</div>
+        </div>
+
+        <!-- Countdown Clock -->
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hrs</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Mins</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Secs</span>
+            </div>
+        </div>
+
+        <!-- RSVP Section Area -->
+        <div class="rsvp-section">
+            <div class="rsvp-title">Will you join us for the premiere?</div>
+            <div class="btn-arena" id="btnArena">
+                <button class="btn btn-yes" onclick="celebrate()">YES!</button>
+                <button class="btn btn-no" id="noBtn">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- COUNTDOWN CLOCK LOGIC ---
+        const weddingDate = new Date("Dec 22, 2026 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+        // --- FIXED RUNAWAY BUTTON LOGIC ---
+        const noBtn = document.getElementById('noBtn');
+        const arena = document.getElementById('btnArena');
+
+        function moveButton() {
+            const arenaWidth = arena.clientWidth;
+            const arenaHeight = arena.clientHeight;
+            const btnWidth = noBtn.clientWidth;
+            const btnHeight = noBtn.clientHeight;
+
+            // Strict maximum boundaries to keep it perfectly inside the arena box
+            const maxX = arenaWidth - btnWidth;
+            const maxY = arenaHeight - btnHeight;
+
+            // Generate positions strictly within bounds
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); 
+            moveButton();
+        });
+
+        function celebrate() {
+            alert("🎟️ Ticket Booked! We can't wait to celebrate our premiere with you! ❤️");
+        }
+    </script>
+</body>
+</html>
